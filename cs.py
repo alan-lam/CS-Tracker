@@ -8,7 +8,7 @@ from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Flatten, Conv2D, MaxPooling2D
 
 NUM_IMAGES = 201
-DATA_DIR = os.path.join('CS Numbers', 'Training')
+TRAINING_DATA_DIR = os.path.join('CS Numbers', 'Training')
 CATEGORIES = [str(i) for i in range(NUM_IMAGES)]
 IMG_WIDTH = 38
 IMG_HEIGHT = 21
@@ -34,17 +34,17 @@ def takeScreenshot(minsElapsed):
 
 def createTrainingData():
     for category in CATEGORIES:
-        path = os.path.join(DATA_DIR, category)
+        path = os.path.join(TRAINING_DATA_DIR, category)
         for img in os.listdir(path):
-            img_array = cv2.imread(os.path.join(path, img), cv2.IMREAD_GRAYSCALE)
+            img_array = cv2.imread(os.path.join(path, img))
             training_data.append([img_array, category])
 
 def testModel():
     for i in range(10):
         randomNumber = random.randrange(NUM_IMAGES)
         print(f'Testing {randomNumber}.png')
-        img = cv2.imread(os.path.join(os.path.join('CS Numbers', 'Testing'), f'{randomNumber}.png'), cv2.IMREAD_GRAYSCALE)
-        img_array = img.reshape(-1, IMG_WIDTH, IMG_HEIGHT, 1)
+        img = cv2.imread(os.path.join(os.path.join('CS Numbers', 'Testing'), f'{randomNumber}.png'))
+        img_array = img.reshape(-1, IMG_WIDTH, IMG_HEIGHT, 3)
         prediction = model.predict(img_array)
         prediction = list(prediction[0])
         print(f'Prediction: {CATEGORIES[prediction.index(max(prediction))]}')
@@ -60,7 +60,7 @@ y = []
 for features, label in training_data:
     X.append(features)
     y.append(int(label))
-X = np.array(X).reshape(-1, IMG_WIDTH, IMG_HEIGHT, 1)
+X = np.array(X).reshape(-1, IMG_WIDTH, IMG_HEIGHT, 3)
 y = np.asarray(y)
 
 model = Sequential([
@@ -81,6 +81,7 @@ model.compile(optimizer='adam',
 
 print('Fitting to model...')
 history = model.fit(X, y, batch_size=BATCH_SIZE, epochs=EPOCHS, verbose=False)
+print(f'Accuracy: {history.history["accuracy"][-1]}')
 
 testModel()
 
