@@ -20,6 +20,10 @@ def takeScreenshot(minsElapsed):
 
 try:
     print(f'[{currentTime()}] Start recording...')
+    try:
+        os.mkdir(DATA_DIR)
+    except:
+        pass # ignore exception if folder exists
     i = 1
     while True:
         time.sleep(600)
@@ -32,4 +36,4 @@ try:
         print(f'[{currentTime()}] {mins} minutes has passed')
 except KeyboardInterrupt:
     print(f'[{currentTime()}] Stop recording...')
-    import cs
+    import plot

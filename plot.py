@@ -20,6 +20,8 @@ ax.set_title(currentDate)
 ax.plot(x, y, label='achieved')
 ax.plot(x, goal_y, label='goal')
 ax.set_yticks(goal_y + [300])
+ax.set_xlabel('Minutes')
+ax.set_ylabel('CS')
 for i,j in zip(x,y):
     ax.annotate(str(j),xy=(i,j))
 plt.legend()
