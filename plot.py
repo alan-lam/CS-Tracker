@@ -13,6 +13,8 @@ except:
 
 x = list(csPer5.keys())
 y = list(csPer5.values())
+if len(y) < 6:
+    y = y + [0] * 6-len(y)
 goal_y = [38, 90, 135, 180, 225, 270]
 
 fig, ax = plt.subplots()

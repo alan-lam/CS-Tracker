@@ -25,7 +25,7 @@ try:
     except:
         pass # ignore exception if folder exists
     for i in range(1,7):
-        time.sleep(600)
+        time.sleep(300)
         mins = i*5
         if mins == 5:
             takeScreenshot('05')
