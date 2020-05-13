@@ -24,7 +24,10 @@ try:
     while True:
         time.sleep(600)
         mins = i*5
-        takeScreenshot(mins)
+        if mins == 5:
+            takeScreenshot('05')
+        else:
+            takeScreenshot(mins)
         i += 1
         print(f'[{currentTime()}] {mins} minutes has passed')
 except KeyboardInterrupt:

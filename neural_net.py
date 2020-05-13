@@ -37,12 +37,13 @@ def testModel():
 def evaluateResults():
     p = re.compile('\d+')
     for img_file in os.listdir(DATA_DIR):
-        mins = p.match(img_file).group()
-        img_array = cv2.imread(os.path.join(DATA_DIR, img_file)).reshape(-1, IMG_WIDTH, IMG_HEIGHT, 3)
-        cs = model.predict(img_array)
-        cs = list(cs[0])
-        cs = CATEGORIES[cs.index(max(cs))]
-        csPer5.append((cs,mins))
+        if not os.path.isdir(os.path.join(DATA_DIR, img_file)):
+            mins = p.match(img_file).group()
+            img_array = cv2.imread(os.path.join(DATA_DIR, img_file)).reshape(-1, IMG_WIDTH, IMG_HEIGHT, 3)
+            cs = model.predict(img_array)
+            cs = list(cs[0])
+            cs = CATEGORIES[cs.index(max(cs))]
+            csPer5[mins] = int(cs)
 
 training_data = []
 createTrainingData()
@@ -74,8 +75,7 @@ model.compile(optimizer='adam',
 print('Training model...')
 history = model.fit(X, y, batch_size=BATCH_SIZE, epochs=EPOCHS, verbose=False)
 print(f'Accuracy: {history.history["accuracy"][-1]}')
-testModel()
+# testModel()
 print('Evaluating results...')
-csPer5 = []
+csPer5 = {}
 evaluateResults()
-print(csPer5)
