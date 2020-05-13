@@ -24,8 +24,7 @@ try:
         os.mkdir(DATA_DIR)
     except:
         pass # ignore exception if folder exists
-    i = 1
-    while True:
+    for i in range(1,7):
         time.sleep(600)
         mins = i*5
         if mins == 5:
@@ -34,6 +33,8 @@ try:
             takeScreenshot(mins)
         i += 1
         print(f'[{currentTime()}] {mins} minutes has passed')
+    print(f'[{currentTime()}] Stop recording...')
+    import plot
 except KeyboardInterrupt:
     print(f'[{currentTime()}] Stop recording...')
     import plot
