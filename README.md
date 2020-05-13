@@ -3,3 +3,4 @@ A program that tracks the amount of cs a player has every 5 minutes in a live ga
 
 ## Resources
 https://towardsdatascience.com/all-the-steps-to-build-your-first-image-classifier-with-code-cf244b015799
+https://stackoverflow.com/questions/15318208/capture-control-c-in-python?noredirect=1&lq=1
