@@ -44,6 +44,18 @@ def evaluateResults():
             cs = list(cs[0])
             cs = CATEGORIES[cs.index(max(cs))]
             csPer5[mins] = int(cs)
+    # put 0's if game ends in < 30 minutes
+    '''
+    0 -> 30
+    1 -> 25
+    2 -> 20
+    .
+    .
+    .
+    y = -5x + 30
+    '''
+    for i in range(6-len(csPer5)):
+        csPer5[str(-5*i+30)] = 0
 
 training_data = []
 createTrainingData()
@@ -73,7 +85,7 @@ model.compile(optimizer='adam',
               metrics=['accuracy'])
 
 print('Training model...')
-history = model.fit(X, y, batch_size=BATCH_SIZE, epochs=EPOCHS, verbose=False)
+history = model.fit(X, y, batch_size=BATCH_SIZE, epochs=EPOCHS, verbose=0)
 print(f'Accuracy: {history.history["accuracy"][-1]}')
 # testModel()
 print('Evaluating results...')
