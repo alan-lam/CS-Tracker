@@ -8,10 +8,6 @@ def currentTime():
     dt = datetime.now().strftime("%H:%M:%S:%f")[:-3]
     return dt
 
-def on_press(key):
-    if key == keyboard.Key.esc:
-        return False
-
 def takeScreenshot(minsElapsed):
     screenWidth = ctypes.windll.user32.GetSystemMetrics(0)
     screenHeight = ctypes.windll.user32.GetSystemMetrics(1)
