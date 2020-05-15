@@ -15,6 +15,7 @@ def takeScreenshot(minsElapsed):
     screenshot.save(os.path.join(DATA_DIR, f'{minsElapsed}.png'), 'PNG')
 
 try:
+    print('Press Ctrl+C to stop recording')
     print(f'[{currentTime()}] Start recording...')
     try:
         os.mkdir(DATA_DIR)
@@ -28,7 +29,7 @@ try:
         else:
             takeScreenshot(mins)
         i += 1
-        print(f'[{currentTime()}] {mins} minutes has passed')
+        print(f'[{currentTime()}] Screenshot captured at {mins} minutes')
     print(f'[{currentTime()}] Stop recording...')
     import plot
 except KeyboardInterrupt:

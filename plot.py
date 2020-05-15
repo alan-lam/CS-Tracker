@@ -2,6 +2,8 @@ import os, uuid
 import matplotlib.pyplot as plt
 from datetime import datetime
 
+winOrLoss = input('Enter Win or Loss: ')
+
 from neural_net import csPer5, DATA_DIR
 
 currentDate = str(datetime.date(datetime.now()))
@@ -16,7 +18,7 @@ y = list(csPer5.values())
 goal_y = [38, 90, 135, 180, 225, 270]
 
 fig, ax = plt.subplots()
-ax.set_title(currentDate)
+ax.set_title(currentDate + ' ' + winOrLoss)
 ax.plot(x, y, label='achieved')
 ax.plot(x, goal_y, label='goal')
 ax.set_yticks(goal_y + [300])
