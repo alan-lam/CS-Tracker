@@ -1,8 +1,9 @@
-import os, cv2, random, re
-import numpy as np
+import os, cv2, re
+# import random
+# import numpy as np
 import tensorflow as tf
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Dense, Flatten, Conv2D, MaxPooling2D
+# from tensorflow.keras.models import Sequential
+# from tensorflow.keras.layers import Dense, Flatten, Conv2D, MaxPooling2D
 
 NUM_IMAGES = 350
 # TRAINING_DATA_DIR = os.path.join('CS Numbers', 'Training')

@@ -5,8 +5,7 @@ from PIL import ImageGrab
 DATA_DIR = os.path.join('CS Numbers', 'Data')
 
 def currentTime():
-    dt = datetime.now().strftime("%H:%M:%S:%f")[:-3]
-    return dt
+    return datetime.now().strftime("%H:%M:%S:%f")[:-3]
 
 def takeScreenshot(minsElapsed):
     screenWidth = ctypes.windll.user32.GetSystemMetrics(0)
