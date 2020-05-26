@@ -1,6 +1,8 @@
 # CS-Tracker
 A program that tracks the amount of cs a player has every 5 minutes in a live game. Every 5 minutes, the program takes a screenshot of the game and uses an image classifier to identify the number.
 
+![](/cstracker.png)
+
 Inspired by this [Reddit post](https://www.reddit.com/r/summonerschool/comments/g92ri6/a_detailed_guide_on_maintaining_good_farm_and/)
 
 ## Resources
